@@ -337,7 +337,7 @@ generate_repo_task:
       - "repos/*/*/*"
       - "repos/*/*/*/*"
 
-install_packages_task:
+test_packages_task:
   depends_on:
     - generate_repo
   matrix:
@@ -458,18 +458,7 @@ install_packages_task:
     done
     pkg install -y ${PD_ALL_PACKAGES}
 
-test_task:
-  depends_on:
-    - install_packages
-  matrix:
-    - compute_engine_instance:
-        image_project: freebsd-org-cloud-dev
-        image: family/freebsd-13-0
-        platform: freebsd
-    - compute_engine_instance:
-        image_project: freebsd-org-cloud-dev
-        image: family/freebsd-12-2
-        platform: freebsd
-
   test_script: |
+
+    # at the moment, none
     true
