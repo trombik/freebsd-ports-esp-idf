@@ -19,14 +19,14 @@ RUN_DEPENDS=	\
 FLAVORS=	idf43 idf33
 FLAVOR?=	${FLAVORS:[1]}
 
+USES=	python cmake:run gmake
+
 idf43_PLIST=	${MASTERDIR}/pkg-plist.${FLAVOR}
 idf33_PLIST=	${MASTERDIR}/pkg-plist.${FLAVOR}
 idf43_PKGNAMESUFFIX=	-${FLAVOR}
 idf33_PKGNAMESUFFIX=	-${FLAVOR}
 DISTINFO_FILE=	${MASTERDIR}/distinfo.${FLAVOR}
 PATCHDIR=	${MASTERDIR}/files/${FLAVOR}
-
-USES=	python cmake:run gmake
 
 .if ${FLAVOR} == "idf43"
 DISTVERSION=	4.3.1
@@ -37,6 +37,8 @@ DISTVERSION=	3.3.5
 USE_GITHUB=	yes
 GH_TUPLE=	espressif:${PORTNAME}:v${DISTVERSION}
 NO_BUILD=	yes
+SUB_FILES=	pkg-message
+SUB_LIST=	PREFIX=${PREFIX} PORTNAME=${PORTNAME} PKGNAMESUFFIX=${PKGNAMESUFFIX} PYTHON_VERSION=${PYTHON_VERSION}
 
 # do nothing. we need runtime dependency only.
 do-configure:

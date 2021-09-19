@@ -1,0 +1,35 @@
+[
+{ type: install
+  message: <<__EOM__
+
+Set IDF_PATH environment variable.
+
+    export IDF_PATH=%%PREFIX%%/%%PORTNAME%%%%PKGNAMESUFFIX%%
+
+Install Python virtualenv for `esp-idf`. This command creates
+`${HOME} /.espressif/python_env`.
+
+    %%PYTHON_VERSION%% "${IDF_PATH}/tools/idf_tools.py" install-python-env
+
+Add Python virtualenv `bin` directory to PATH environment variable. The path
+depends on your environment. To find out the path, run:
+
+    realpath ${HOME}/.espressif/python_env/idf*_py*_env/bin
+
+The above command shows path to Python virtualenv `bin`. It is somthing like:
+
+    /home/trombik/.espressif/python_env/idf4.3_py3.7_env/bin
+
+    export PATH="`realpath ${HOME}/.espressif/python_env/idf*_py*_env/bin`:${PATH}"
+
+Optionally, add `tools` directory to PATH environment variable, which makes it
+possible to run `idf.py` and other tools without full path.
+
+    export PATH=${PATH}:%%PREFIX%%/%%PORTNAME%%%%PKGNAMESUFFIX%%/tools
+
+Install the toolchain, such as xtensa-esp32-elf. The ports are available at:
+https://github.com/trombik/xtensa-esp32-elf
+
+__EOM__
+}
+]
