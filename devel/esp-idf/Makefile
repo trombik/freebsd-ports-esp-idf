@@ -12,14 +12,15 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 RUN_DEPENDS=	\
 	${PYTHON_PKGNAMEPREFIX}pip>0:devel/py-pip@${PY_FLAVOR} \
 	${PYTHON_PKGNAMEPREFIX}virtualenv>=0:devel/py-virtualenv@${PY_FLAVOR} \
-	rust>0:lang/rust
+	rust>0:lang/rust \
+	gmake>=4.3:devel/gmake
 
 # see https://github.com/espressif/esp-idf/releases and
 # https://github.com/espressif/esp-idf/blob/master/SUPPORT_POLICY.md
 FLAVORS=	idf43 idf33
 FLAVOR?=	${FLAVORS:[1]}
 
-USES=	python cmake:run gmake
+USES=	python cmake:run
 
 idf43_PLIST=	${MASTERDIR}/pkg-plist.${FLAVOR}
 idf33_PLIST=	${MASTERDIR}/pkg-plist.${FLAVOR}
