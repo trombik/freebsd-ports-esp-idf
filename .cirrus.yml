@@ -354,9 +354,6 @@ test_packages_task:
         image_project: freebsd-org-cloud-dev
         image: family/freebsd-11-4
         platform: freebsd
-        cpu: 4
-        memory: 8
-        disk: 80
 
   define_common_variables_script: |
 
