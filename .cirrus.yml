@@ -285,7 +285,10 @@ generate_repo_task:
     # use encrypted private key on cirrus-ci.
     #
     # XXX you need to create your own private and public keys, and upload the
-    # private key to cirrus-ci. see also pkg-repo(8)
+    # private key to cirrus-ci. see also pkg-repo(8).
+    #
+    # the public key, `.fingerprint`, must be placed under the root directory
+    # of the repository.
     PD_REPO_KEY: ENCRYPTED[26725bfd9629a7f04617a236f1686a3311d1904ef64041ab0ea922efa6e7e455b1ef66640c1e4abd7db1fde4b392fd16]
   depends_on:
     - build
