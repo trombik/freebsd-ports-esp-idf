@@ -205,7 +205,7 @@ build_task:
     # create the merged ports tree
     time -h portshaker -M
 
-    # create the merged ports tree
+    # add the merged ports tree to poudriere
     poudriere ports -c -p "${PD_PORTS_NAME}" -M "${PD_BASEFS}/ports/${PD_PORTS_NAME}" -m null
 
     # ensure DISTFILES_CACHE exists
