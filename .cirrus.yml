@@ -14,6 +14,7 @@ env:
   USER: root
 
 build_task:
+  skip: "changesIncludeOnly('**.md')"
   matrix:
     # XXX use compute_engine_instance, instead of freebsd_instance, which is a
     # syntactic sugar. with freebsd_instance, disk parameter is ignored.
@@ -280,6 +281,7 @@ build_task:
       type: text/plain
 
 generate_repo_task:
+  skip: "changesIncludeOnly('**.md')"
   environment:
 
     # use encrypted private key on cirrus-ci.
@@ -342,6 +344,7 @@ generate_repo_task:
       - "repos/*/*/*/*"
 
 test_packages_task:
+  skip: "changesIncludeOnly('**.md')"
   depends_on:
     - generate_repo
   matrix:
